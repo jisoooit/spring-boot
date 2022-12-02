@@ -111,7 +111,8 @@
     <div class="box">
       <h1 style="font-size: 35px;color: white;">간단 사이트</h1>
     </div>
-
+    <div th:text="${email}"></div>
+    <div th:text="${session.email}"></div>
     <div class="box">
       <div class="fr" style="text-align: left;width: 100%; padding-bottom: 5px;">
         <button onclick="location.href='/goSignUp'" style="height:50px;text-align:center; font-size: 30px; width: 100%;">회원가입 페이지 이동</button>

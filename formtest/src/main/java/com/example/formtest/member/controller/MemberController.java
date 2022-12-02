@@ -1,6 +1,7 @@
 package com.example.formtest.member.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,12 +24,13 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam HashMap<String, String> params, HttpSession session){
+    public String login(@RequestParam HashMap<String, String> params, HttpSession session, Model model){
 
         for (HashMap<String, String> param : memberList){
             if(params.get("email").equals(param.get("email")) && params.get("password").equals(param.get("password"))){
                 //가입한 회원인 경우
                 session.setAttribute("email",param.get("email"));
+                model.addAttribute("email", param.get("email"));
             }
         }
 

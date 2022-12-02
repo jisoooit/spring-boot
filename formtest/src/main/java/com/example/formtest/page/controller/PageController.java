@@ -36,9 +36,33 @@ public class PageController {
         if (session.getAttribute("email")==null){ // login 안한 경우
             return "signup";
         }else{
-            return "index";
+            return "memberOnly";
         }
     }
 
+    @GetMapping("/goChat")
+    public String goChat(HttpSession session){
+        if (session.getAttribute("email")==null){ // login 안
+            return "index";
+        }
+        session.setAttribute("nickName", session.getAttribute("email"));
+        return "main";
+    }
+
+    @GetMapping("/goCalendar")
+    public String goCalendar(HttpSession session){
+        if (session.getAttribute("email")==null){ // login 안
+            return "index";
+        }
+        return "calendar";
+    }
+
+    @GetMapping("/goTodo")
+    public String goTodo(HttpSession session){
+        if (session.getAttribute("email")==null){ // login 안
+            return "index";
+        }
+        return "todolist";
+    }
 
 }
