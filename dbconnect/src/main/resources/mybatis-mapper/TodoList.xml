@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dbconnect.mapper.TodoListMapper">  <!--인터페이스의 경로, xml 하나 당 인터페이스 하나-->
+
+    <insert id="insertTodo" parameterType="String" >
+        INSERT INTO todolist
+            (todo)
+        values
+            (#{todo})
+    </insert>
+
+    <select id="selectTodo" resultType="HashMap">
+        select
+            id,
+            todo,
+            created_at
+        from
+            todolist
+    </select>
+
+    <delete id="deleteTodo" parameterType="HashMap">
+        delete from todolist
+        where id = #{id}
+    </delete>
+</mapper>
