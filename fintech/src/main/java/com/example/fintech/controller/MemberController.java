@@ -25,18 +25,15 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(@RequestParam Map<String, String> params, HttpSession session){
-//        for (Map.Entry<String, String> entrySet : params.entrySet()) {
-//            System.out.println(entrySet.getKey() + " : " + entrySet.getValue());
-//        }
-//
-//        for (Map<String, Object> member : memberService.allMember()){
-//            if (params.get("email").equals(member.get("email"))
-//                && params.get("password").equals(member.get("password"))){
-//                session.setAttribute("email", params.get("email"));
-//                System.out.println(session.getAttribute("email"));
-//
-//            }
-//        }
+
+
+        for (Map<String, Object> member : memberService.allMember()){
+            if (params.get("email").equals(member.get("email"))
+                && params.get("password").equals(member.get("password"))){
+                session.setAttribute("email", params.get("email"));
+
+            }
+        }
         session.setAttribute("email",params.get("email"));
         return "redirect:/";
     }
