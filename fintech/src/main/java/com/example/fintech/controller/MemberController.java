@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class MemberController {
             return "redirect:/";
         }
 
-        return "signup";
+        return "redirect:/login";
     }
 
     @GetMapping("/point")
@@ -46,5 +47,10 @@ public class MemberController {
         return "index";
     }
 
+    @GetMapping("/subscribe")
+    public String subscribe(@RequestParam String email, HttpServletRequest request){
+        memberService.subscribe(email);
+        return "redirect:" + request.getHeader("Referer");
+    }
 
 }

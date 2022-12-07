@@ -12,4 +12,8 @@ public interface MemberMapper {
     public List<Map<String, Object>> allMember();
 
     public int charge(Map<String, String> params);
+
+    public int subscribe(String email);
+
+
 }

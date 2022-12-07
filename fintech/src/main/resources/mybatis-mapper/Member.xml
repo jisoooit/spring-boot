@@ -21,6 +21,20 @@
             (#{email},#{amount}, #{uid})
     </insert>
 
+    <insert id="subscribe" parameterType="String">
+        INSERT INTO subscribe
+            (email)
+        values
+            (#{email})
+    </insert>
+
+    <insert id="contact" parameterType="HashMap">
+        INSERT INTO contact
+            (name, email, phone, message)
+        values
+            (#{name}, #{email}, #{phone}, #{message})
+    </insert>
+
 
 
 </mapper>

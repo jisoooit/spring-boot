@@ -36,4 +36,8 @@ public class MemberService {
         }
         return false;
     }
+
+    public int subscribe(String email) {
+        return memberRepository.subscribe(email);
+    }
 }

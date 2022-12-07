@@ -24,4 +24,8 @@ public class MemberRepository {
     public int charge(Map<String, String> params) {
         return memberMapper.charge(params);
     }
+
+    public int subscribe(String email){
+        return memberMapper.subscribe(email);
+    }
 }
