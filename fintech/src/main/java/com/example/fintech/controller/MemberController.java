@@ -26,21 +26,16 @@ public class MemberController {
     @PostMapping("/login")
     public String login(@RequestParam Map<String, String> params, HttpSession session){
 
-
-        for (Map<String, Object> member : memberService.allMember()){
-            if (params.get("email").equals(member.get("email"))
-                && params.get("password").equals(member.get("password"))){
-                session.setAttribute("email", params.get("email"));
-
-            }
+        if(memberService.login(params, session)){
+            return "redirect:/";
         }
-        session.setAttribute("email",params.get("email"));
-        return "redirect:/";
+
+        return "signup";
     }
 
     @GetMapping("/point")
     public String charge(@RequestParam Map<String, String> params, HttpSession httpSession){
-        System.out.println(httpSession.getAttribute("email").toString());
+
         params.put("email",httpSession.getAttribute("email").toString());
 
         for (Map.Entry<String, String> entrySet : params.entrySet()) {
