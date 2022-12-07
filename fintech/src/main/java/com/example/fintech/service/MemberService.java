@@ -40,4 +40,8 @@ public class MemberService {
     public int subscribe(String email) {
         return memberRepository.subscribe(email);
     }
+
+    public int requestCall(Map<String, String> params){
+        return memberRepository.requestCall(params);
+    }
 }

@@ -28,4 +28,8 @@ public class MemberRepository {
     public int subscribe(String email){
         return memberMapper.subscribe(email);
     }
+
+    public int requestCall(Map<String, String> params){
+        return memberMapper.contact(params);
+    }
 }

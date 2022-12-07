@@ -53,4 +53,10 @@ public class MemberController {
         return "redirect:" + request.getHeader("Referer");
     }
 
+    @PostMapping("/requestCall")
+    public String requestCall(@RequestParam Map<String, String> params){
+        memberService.requestCall(params);
+        return "redirect:/";
+    }
+
 }

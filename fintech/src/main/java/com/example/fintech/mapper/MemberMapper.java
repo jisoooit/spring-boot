@@ -15,5 +15,7 @@ public interface MemberMapper {
 
     public int subscribe(String email);
 
+    public int contact(Map<String, String> params);
+
 
 }
