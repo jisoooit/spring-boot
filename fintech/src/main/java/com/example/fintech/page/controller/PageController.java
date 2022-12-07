@@ -27,5 +27,5 @@ public class PageController {
     public String goMarket() { return "market"; }
 
     @GetMapping("/goHistory")
-    public String goHistory() { return "market"; }
+    public String goHistory() { return "history"; }
 }

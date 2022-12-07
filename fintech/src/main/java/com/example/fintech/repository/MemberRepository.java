@@ -32,4 +32,12 @@ public class MemberRepository {
     public int requestCall(Map<String, String> params){
         return memberMapper.contact(params);
     }
+
+    public List<Map<String, Object>> pointList(String email){
+        return memberMapper.pointList(email);
+    }
+
+    public int totalPoint(String email){
+        return memberMapper.totalPoint(email);
+    }
 }

@@ -17,5 +17,7 @@ public interface MemberMapper {
 
     public int contact(Map<String, String> params);
 
+    public List<Map<String, Object>> pointList(String email);
 
+    public int totalPoint(String email);
 }

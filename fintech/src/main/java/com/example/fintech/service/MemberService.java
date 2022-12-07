@@ -44,4 +44,24 @@ public class MemberService {
     public int requestCall(Map<String, String> params){
         return memberRepository.requestCall(params);
     }
+
+    public List<Map<String, Object>> pointList(String email){
+        return memberRepository.pointList(email);
+    }
+
+    public int totalPoint(String email){
+        return memberRepository.totalPoint(email);
+    }
+
+    public String checkBalance(double total, String email){
+        int nowPoint = totalPoint(email);
+        if (total <= nowPoint){
+            System.out.println("can");
+            return "can";
+        }else{
+            System.out.println("cannot");
+            return "cannot";
+        }
+        
+    }
 }

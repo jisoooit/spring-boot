@@ -35,6 +35,18 @@
             (#{name}, #{email}, #{phone}, #{message})
     </insert>
 
+    <select id="pointList" resultType="HashMap">
+        select amount, indate
+        from payment
+        where email = #{email}
+    </select>
+
+    <select id="totalPoint" resultType="Integer">
+        select sum(amount)
+        from payment
+        group by email = #{email}
+    </select>
+
 
 
 </mapper>
