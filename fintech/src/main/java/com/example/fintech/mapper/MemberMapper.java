@@ -1,5 +1,6 @@
 package com.example.fintech.mapper;
 
+import com.example.fintech.dto.BuyCoinDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -20,4 +21,6 @@ public interface MemberMapper {
     public List<Map<String, Object>> pointList(String email);
 
     public int totalPoint(String email);
+
+    public int buyCoin(BuyCoinDTO buyCoinDTO);
 }

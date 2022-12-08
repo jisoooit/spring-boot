@@ -1,6 +1,8 @@
 package com.example.fintech.service;
 
+import com.example.fintech.dto.BuyCoinDTO;
 import com.example.fintech.repository.MemberRepository;
+import com.example.fintech.vo.BuyCoinVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -63,5 +65,18 @@ public class MemberService {
             return "cannot";
         }
         
+    }
+
+    public int buyCoin(BuyCoinVO params, String email){
+        BuyCoinDTO buyCoinDTO = new BuyCoinDTO(
+                params.getPrice(),
+                params.getCoinId(),
+                params.getName(),
+                email,
+                params.getAmount(),
+                params.getTotal()
+        );
+        System.out.println("여기");
+        return memberRepository.buyCoin(buyCoinDTO);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.fintech.repository;
 
+import com.example.fintech.dto.BuyCoinDTO;
 import com.example.fintech.mapper.MemberMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,5 +40,9 @@ public class MemberRepository {
 
     public int totalPoint(String email){
         return memberMapper.totalPoint(email);
+    }
+
+    public int buyCoin(BuyCoinDTO buyCoinDTO){
+        return memberMapper.buyCoin(buyCoinDTO);
     }
 }

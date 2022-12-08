@@ -1,12 +1,11 @@
 package com.example.fintech.controller;
 
+import com.example.fintech.dto.BuyCoinDTO;
 import com.example.fintech.service.MemberService;
+import com.example.fintech.vo.BuyCoinVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -75,6 +74,20 @@ public class MemberController {
         }
         return memberService.checkBalance(total, session.getAttribute("email").toString());
     }
+
+    @PostMapping("/buyCoin")
+    public String buyCoin( BuyCoinVO buyCoinVO, HttpSession session){ //vo로 받으면 requestbody 없어야되고, hashmap이랑 받으면 있어야함
+        if (session.getAttribute("email")==null){
+            return "login";
+        }
+        //buyCoin.put("email", session.getAttribute("email").toString());
+
+        System.out.println(buyCoinVO.toString());
+        memberService.buyCoin(buyCoinVO, session.getAttribute("email").toString());
+        return "redirect:/history";
+    }
+
+
 
 
 

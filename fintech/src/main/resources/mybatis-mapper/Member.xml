@@ -47,6 +47,12 @@
         group by email = #{email}
     </select>
 
+    <insert id="buyCoin" parameterType="com.example.fintech.dto.BuyCoinDTO">
+        insert into buy
+            (price, coinId, name, email, total, amount)
+        values
+            (#{price}, #{coinId}, #{name}, #{email}, #{total}, #{amount})
+    </insert>
 
 
 </mapper>
