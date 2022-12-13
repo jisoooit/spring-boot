@@ -76,7 +76,7 @@ public class MemberController {
     }
 
     @PostMapping("/buyCoin")
-    public String buyCoin( BuyCoinVO buyCoinVO, HttpSession session){ //vo로 받으면 requestbody 없어야되고, hashmap이랑 받으면 있어야함
+    public String buyCoin(@ModelAttribute BuyCoinVO buyCoinVO, HttpSession session){ //vo로 받으면 requestbody 없어야되고, hashmap이랑 받으면 있어야함
         if (session.getAttribute("email")==null){
             return "login";
         }

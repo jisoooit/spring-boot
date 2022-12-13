@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.admin.mapper.AdminMapper">  <!--인터페이스의 경로, xml 하나 당 인터페이스 하나-->
+    <select id="allAdmin" resultType="HashMap">
+        select id, password
+        from admin
+    </select>
+    
+    <select id="selectCntMember" resultType="Integer">
+        select count(*) as memberCnt
+        from member
+    </select>
+    
+    <select id="selectAmountPayment" resultType="Double">
+        select sum(amount) as paymentSum from payment p ;
+    </select>
+
+    <select id="selectCntBuy" resultType="Integer">
+        select count(*) as buyCnt from buy;
+    </select>
+
+    <select id="selectCntContact" resultType="Integer">
+        select count(*) as contactCnt from contact c ;
+    </select>
+
+    <select id="selectMember" resultType="HashMap">
+        select email, name, phone, address, detail, indate
+        from member m;
+    </select>
+
+    <select id="selectPayment" resultType="HashMap">
+        select id, email, amount, uid, indate
+        from payment p;
+    </select>
+
+    <select id="selectBuy" resultType="HashMap">
+        select id, email, coinId, name, price, amount, total, indate
+        from buy b;
+    </select>
+
+    <select id="selectContact" resultType="HashMap">
+        select id, name, email, phone, message, indate
+        from contact c ;
+    </select>
+
+    <select id="selectSubscribe" resultType="HashMap">
+        select email, indate
+        from subscribe s ;
+    </select>
+
+</mapper>
