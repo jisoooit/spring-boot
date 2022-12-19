@@ -1,10 +1,12 @@
 package com.example.admin.service;
 
+import com.example.admin.dto.AdminDTO;
 import com.example.admin.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,12 +20,16 @@ public class AdminService {
         return adminRepository.allAdmin();
     }
 
-    public boolean login(Map<String, String> params, HttpSession session) {
+    public boolean login(AdminDTO adminDTO, HttpSession session) {
+
+        HashMap<String, String> params = new HashMap<>();
+        params.put("id",adminDTO.getId());
+        params.put("password", adminDTO.getPassword());
 
         for(Map<String, Object> admin  : allAdmin()){
             if(params.get("id").equals(admin.get("id")) &&
                 params.get("password").equals(admin.get("password"))){
-                session.setAttribute("email", params.get("id"));
+                session.setAttribute("id", params.get("id"));
                 return true;
             }
         }
