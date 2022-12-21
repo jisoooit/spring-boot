@@ -1,6 +1,7 @@
 package com.example.shop.controller;
 
 import com.example.shop.dto.ProductList;
+import com.example.shop.service.ProductService;
 import com.example.shop.util.SearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
