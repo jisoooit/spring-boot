@@ -4,9 +4,11 @@ import com.example.shop.dto.Member;
 import com.example.shop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 
+@RestController
 public class LoginController {
     @Autowired
     MemberService memberService;
@@ -18,7 +20,9 @@ public class LoginController {
 
     @PostMapping("/login")
     public Member login(Member member, HttpSession session) {
+        System.out.println("여기여기");
         Member loginMember = memberService.login(member);
+        System.out.println(loginMember.getId());
         if (loginMember != null) {
             session.setAttribute("id", loginMember);
             return loginMember;
