@@ -6,6 +6,7 @@ import com.example.shop.util.SearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -19,5 +20,14 @@ public class ProductRepository {
 
     public int count(SearchDto params){
         return productMapper.count(params);
+    }
+    public int selectAvailAmount(HashMap<String,String> params){
+        return productMapper.selectAvailAmount(params);
+    }
+    public List<HashMap<String, Object>> checkAvailProductId(){
+        return productMapper.checkAvailProductId();
+    }
+    public HashMap<String, Object> checkAmountProduct(HashMap<String, String> params){
+        return productMapper.checkAmountProduct(params);
     }
 }

@@ -45,26 +45,49 @@
         COUNT(*)
         FROM
         PRODUCT
+        WHERE
+        1=1
 
+        <choose>
+            <when test="keyword != null and keyword != '' and keyword == '쿠키'">
+                and ID IN
+                (
+                SELECT ETCID FROM CATEMAP WHERE CATEID IN
+                (SELECT ID FROM CATEGORY WHERE CATENAME=#{keyword} or CATENAME='서비스')
+                )
+            </when>
+            <when test="keyword != null and keyword != ''">
+                and ID IN
+                (
+                SELECT ETCID FROM CATEMAP WHERE CATEID IN
+                (SELECT ID FROM CATEGORY WHERE CATENAME=#{keyword})
+                )
+            </when>
+            <otherwise>
 
-<!--        <choose>-->
-<!--            <when test="keyword != null and keyword != '' and keyword == '쿠키'">-->
-<!--                and ID IN-->
-<!--                (-->
-<!--                SELECT ETCID FROM CATEMAP WHERE CATEID IN-->
-<!--                (SELECT ID FROM CATEGORY WHERE CATENAME=#{keyword} or CATENAME='서비스')-->
-<!--                )-->
-<!--            </when>-->
-<!--            <when test="keyword != null and keyword != ''">-->
-<!--                and ID IN-->
-<!--                (-->
-<!--                SELECT ETCID FROM CATEMAP WHERE CATEID IN-->
-<!--                (SELECT ID FROM CATEGORY WHERE CATENAME=#{keyword})-->
-<!--                )-->
-<!--            </when>-->
-<!--            <otherwise>-->
+            </otherwise>
+        </choose>
+    </select>
+    <select id="selectAvailAmount" resultType="int" parameterType="HashMap">
+        SELECT amount FROM PRODUCT A
+        WHERE
+            STATUS='판매가능'
+          AND
+            ID=#{id}
+    </select>
+    <select id="checkAvailProductId" resultType="HashMap">
+        SELECT id FROM PRODUCT A
+        WHERE
+            ((MARKETTYPE='기간판매' and ((select count(*) from SELLTIME where (select NOW() from dual)
+                                                                              BETWEEN starttime and endtime)>0))
+                OR
+             MARKETTYPE='상시판매')
+          AND
+            STATUS='판매가능'
+    </select>
 
-<!--            </otherwise>-->
-<!--        </choose>-->
+    <select id="checkAmountProduct" parameterType="HashMap" resultType="HashMap">
+        SELECT productname,amount FROM PRODUCT
+        WHERE ID=#{id}
     </select>
 </mapper>

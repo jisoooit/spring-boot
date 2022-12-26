@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -31,4 +32,13 @@ public class ProductService {
 
     }
 
+    public int selectAvailAmount(HashMap<String,String> params){
+        return productRepository.selectAvailAmount(params);
+    }
+    public List<HashMap<String, Object>> checkAvailProductId(){
+        return productRepository.checkAvailProductId();
+    }
+    public HashMap<String, Object> checkAmountProduct(HashMap<String, String> params){
+        return productRepository.checkAmountProduct(params);
+    }
 }
