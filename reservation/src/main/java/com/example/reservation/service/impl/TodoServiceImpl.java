@@ -20,7 +20,7 @@ public class TodoServiceImpl implements TodoService {
     public List<TodoResponse> todoList() {
 
         return todoRepository.findAll().stream()
-                .map(entity -> new TodoResponse(entity))
+                .map(TodoResponse::new)
                 .collect(Collectors.toList());
     }
 
